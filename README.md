@@ -56,6 +56,8 @@ Ensure the following files/folders are present:
 - test/
 - labels.csv
 
+  or you can downlode from kaggle dataset https://www.kaggle.com/datasets/diwas13/dog-breed-classification
+
 🔄 Data Preprocessing
 
 Image transformations:
