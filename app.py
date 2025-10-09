@@ -97,9 +97,15 @@ if uploaded_file is not None:
     with st.spinner("Classifying..."):
         predictions = predict(image)
 
+    # Check confidence threshold
+    CONFIDENCE_THRESHOLD = 0.30
+    
     # Show top prediction
     best_breed, best_conf = predictions[0]
-    st.success(f"🐾 Most likely breed: **{best_breed}** ({best_conf * 100:.2f}%)")
+    if best_conf < CONFIDENCE_THRESHOLD:
+        st.warning("🐶 I couldn’t find a dog in this photo. Please try uploading a clearer image of a dog.")
+    else:
+        st.success(f"🐾 Most likely breed: **{best_breed}** ({best_conf * 100:.2f}%)")
 
     # Bar chart of top-5 predictions
     st.subheader("Top 5 Predictions")
