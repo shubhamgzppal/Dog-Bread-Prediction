@@ -107,16 +107,16 @@ if uploaded_file is not None:
     else:
         st.success(f"🐾 Most likely breed: **{best_breed}** ({best_conf * 100:.2f}%)")
 
-    # Bar chart of top-5 predictions
-    st.subheader("Top 5 Predictions")
-    breeds_, probs_ = zip(*predictions)
-
-    df = pd.DataFrame({
-    "Breed": breeds_,
-    "Confidence (%)": [round(prob * 100, 2) for prob in probs_]
-    })
-
-    df["Breed"] = df["Breed"].apply(lambda x: x.replace("_", " ").title())
-
-    st.bar_chart(df.set_index("Breed"))
+        # Bar chart of top-5 predictions
+        st.subheader("Top 5 Predictions")
+        breeds_, probs_ = zip(*predictions)
+    
+        df = pd.DataFrame({
+        "Breed": breeds_,
+        "Confidence (%)": [round(prob * 100, 2) for prob in probs_]
+        })
+    
+        df["Breed"] = df["Breed"].apply(lambda x: x.replace("_", " ").title())
+    
+        st.bar_chart(df.set_index("Breed"))
 
